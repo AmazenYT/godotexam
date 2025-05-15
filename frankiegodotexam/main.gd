@@ -8,6 +8,8 @@ func _ready() -> void:
 
 func game_over() -> void:
 	$EnemyTimer.stop()
+	$HUD.show_message("Game Over")
+	
 	
 func new_game() -> void:
 	$Player.start($PlayerStart.position)
