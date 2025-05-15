@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal hit
 
 const SPEED = 300.0
 var screen_size
@@ -23,3 +23,15 @@ func _physics_process(delta: float) -> void:
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	move_and_slide()
+
+
+func _on_hit() -> void:
+	hide()
+	hit.emit()
+	$CollisionShape2D.set_deferred("disabled", true)
+	pass 
+
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
