@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://b1k84dy28libu" path="res://enemy.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b4c2mgke873b4" path="res://player.tscn" id="3_1bvp3"]
 
-[sub_resource type="Curve2D" id="Curve2D_0xm2m"]
+[sub_resource type="Curve2D" id="Curve2D_h2yge"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1149, -1, 0, 0, 0, 0, 1149, 645, 0, 0, 0, 0, 3, 643, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 395, 3, 0, 0, 0, 0, 1151, 1, 0, 0, 0, 0, 1149, 650, 0, 0, 0, 0, 398, 647, 0, 0, 0, 0, 395, 3)
 }
 point_count = 5
 
@@ -16,21 +16,24 @@ enemy_scene = ExtResource("2_h2yge")
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.5
+autostart = true
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
 [node name="PlayerStart" type="Marker2D" parent="."]
 position = Vector2(77, 305)
 
+[node name="Player" parent="." instance=ExtResource("3_1bvp3")]
+
 [node name="EnemyPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_0xm2m")
+curve = SubResource("Curve2D_h2yge")
 
 [node name="EnemySpawnLocations" type="PathFollow2D" parent="EnemyPath"]
-rotation = -0.000870322
-
-[node name="Player" parent="." instance=ExtResource("3_1bvp3")]
+position = Vector2(395, 3)
+rotation = -0.0026455
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
