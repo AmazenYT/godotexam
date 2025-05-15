@@ -14,7 +14,7 @@ func game_over() -> void:
 func new_game() -> void:
 	$Player.start($PlayerStart.position)
 	$StartTimer.start
-	
+	$HUD.update_lives($Player.lives)
 	pass # Replace with function body.
 
 

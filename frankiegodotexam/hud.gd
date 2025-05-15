@@ -1,4 +1,5 @@
 extends CanvasLayer
+@export var lives:int
 
 func show_message(text):
 	$GameOverMessage.text = text
@@ -12,3 +13,6 @@ func show_game_over():
 func _on_game_over_timer_timeout() -> void:
 	$GameOverMessage.hide()
 	pass # Replace with function body.
+	
+func update_lives(lives:int):
+	$Lives.text = str(lives)

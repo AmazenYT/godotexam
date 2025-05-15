@@ -33,4 +33,21 @@ autowrap_mode = 2
 wait_time = 5.0
 one_shot = true
 
+[node name="Lives" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -569.0
+offset_top = -645.0
+offset_right = -89.0
+offset_bottom = -557.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_64ctp")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
