@@ -1,8 +1,9 @@
-extends CharacterBody2D
+extends Area2D
 signal hit
 
 const SPEED = 300.0
 var screen_size
+var lives:int = 5
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -22,16 +23,19 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.normalized() * SPEED
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-	move_and_slide()
-
-
-func _on_hit() -> void:
-	hide()
-	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
-	pass 
+	
 
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
+
+func _on_body_entered(body: Node2D) -> void:
+	lives -= 1
+	if lives == 0:
+		hide()
+		hit.emit()
+		$CollisionShape2D.set_deferred("disabled", true)
+	
+	pass # Replace with function body.

@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func game_over() -> void:
 	$EnemyTimer.stop()
-	$HUD.show_message("Game Over")
+	$HUD.show_game_over()
 	
 	
 func new_game() -> void:
